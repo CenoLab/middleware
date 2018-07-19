@@ -14,15 +14,10 @@ import com.iot.nero.nraft.annotation.ConfigField;
 @ConfigClass
 public class Config {
 
-
-
     @ConfigField("server.host")
     private String host = "localhost";
     @ConfigField("server.port")
     private Integer port = 1080;
-
-
-
 
 
     @ConfigField("node.name")
