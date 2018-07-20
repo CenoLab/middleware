@@ -1,5 +1,7 @@
 package com.iot.nero.nraft.service;
 
+import com.iot.nero.nraft.entity.*;
+
 /**
  * Author neroyang
  * Email  nerosoft@outlook.com
@@ -11,17 +13,17 @@ public interface IRaftService {
     /**
      * 选举
      */
-    void vote();
+    VoteReply vote(VoteArgs voteArgs);
 
     /**
      * 心跳
      */
-    void heartBeat();
+    void heartBeat(HeartBeat heartBeat);
 
     /**
      * 数据发送 inconsistencies
      */
-    void logReplicate();
+    AppendEntriesReply logReplicate(AppendEntriesArgs appendEntriesArgs);
 
     /**
      * 数据提交  overwrites inconsistencies

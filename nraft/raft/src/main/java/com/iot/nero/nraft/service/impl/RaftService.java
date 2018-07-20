@@ -1,5 +1,6 @@
 package com.iot.nero.nraft.service.impl;
 
+import com.iot.nero.nraft.entity.*;
 import com.iot.nero.nraft.service.IRaftService;
 
 /**
@@ -11,18 +12,18 @@ import com.iot.nero.nraft.service.IRaftService;
 public class RaftService implements IRaftService {
 
     @Override
-    public void vote() {
+    public VoteReply vote(VoteArgs voteArgs) {
+        return null;
+    }
+
+    @Override
+    public void heartBeat(HeartBeat heartBeat) {
 
     }
 
     @Override
-    public void heartBeat() {
-
-    }
-
-    @Override
-    public void logReplicate() {
-
+    public AppendEntriesReply logReplicate(AppendEntriesArgs appendEntriesArgs) {
+        return null;
     }
 
     @Override

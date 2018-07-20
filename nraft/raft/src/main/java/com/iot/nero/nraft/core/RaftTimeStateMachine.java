@@ -5,6 +5,8 @@ import com.iot.nero.nraft.client.RpcClientConnectionPool;
 import com.iot.nero.nraft.client.RpcErrorListener;
 import com.iot.nero.nraft.cluster.entity.Node;
 import com.iot.nero.nraft.constant.Role;
+import com.iot.nero.nraft.entity.HeartBeat;
+import com.iot.nero.nraft.entity.VoteArgs;
 import com.iot.nero.nraft.entity.response.Response;
 import com.iot.nero.nraft.service.IRaftService;
 import com.iot.nero.nraft.utils.RandomUtils;
@@ -16,6 +18,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static io.protostuff.CollectionSchema.MessageFactories.ArrayList;
+
 /**
  * Author neroyang
  * Email  nerosoft@outlook.com
@@ -23,10 +27,15 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Time   9:18 AM
  */
 public class RaftTimeStateMachine {
+
     private Boolean isRunning = false;
 
     private Integer term;
+    private Integer candidateId;
+    private Integer lastLogIndex;
+    private Integer lastLogTerm;
     private AtomicInteger voteNum;
+
 
     public static Role role = Role.FOLLOWER; // 当前节点状态
     public static Integer waitMilliseconds; // follower 等待时间
@@ -100,15 +109,21 @@ public class RaftTimeStateMachine {
     private void startElection() {
         voteNum = new AtomicInteger(0); // 将票数设置为0
 
-        List<Node> nodeList = new ArrayList<>();
+        final List<Node> nodeList = new ArrayList<>();
 
-        for(Node node:nodeList){ // 遍历节点
+        final VoteArgs voteArgs = new VoteArgs(term, candidateId, lastLogIndex, lastLogTerm);
+
+        for (Node node : nodeList) { // 遍历节点
             // 从客户端连接池获取连接
             final IRaftService raftService = connectionPool.getConnection(node).getRemoteProxyService(IRaftService.class);
             executorService.execute(new Runnable() { // 并发向其他节点发送投票请求
                 @Override
                 public void run() {
-                    raftService.vote(); // todo 投票请求参数
+                    if (raftService.vote(voteArgs).getVoteGranted()) { // todo 投票请求参数
+                        if (voteNum.incrementAndGet() > nodeList.size() / 2) { // 的到一般以上的节点票数
+                            role = Role.LEADER;
+                        }
+                    }
                 }
             });
         }
@@ -119,6 +134,19 @@ public class RaftTimeStateMachine {
      * 作为 leader 向其他节点发送心跳
      */
     private void sendHeartBeat(){
+        List<Node> nodeList = new ArrayList<>();
+
+        final HeartBeat heartBeat = new HeartBeat(term,new ArrayList<Node>());
+        for(Node node:nodeList){ // 遍历节点
+            // 从客户端连接池获取连接
+            final IRaftService raftService = connectionPool.getConnection(node).getRemoteProxyService(IRaftService.class);
+            executorService.execute(new Runnable() { // 并发向其他节点发送心跳
+                @Override
+                public void run() {
+                    raftService.heartBeat(heartBeat); // 心跳发送
+                }
+            });
+        }
 
     }
 

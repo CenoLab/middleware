@@ -8,14 +8,14 @@ import java.io.Serializable;
  * Date   2018/7/17
  * Time   6:49 PM
  */
-public class RequestVoteReply implements Serializable {
+public class VoteReply implements Serializable {
     private Integer term;
     private Boolean voteGranted;
 
-    public RequestVoteReply() {
+    public VoteReply() {
     }
 
-    public RequestVoteReply(Integer term, Boolean voteGranted) {
+    public VoteReply(Integer term, Boolean voteGranted) {
         this.term = term;
         this.voteGranted = voteGranted;
     }
@@ -38,7 +38,7 @@ public class RequestVoteReply implements Serializable {
 
     @Override
     public String toString() {
-        return "RequestVoteReply{" +
+        return "VoteReply{" +
                 "term=" + term +
                 ", voteGranted=" + voteGranted +
                 '}';
