@@ -11,7 +11,7 @@ import java.util.Map;
  * Date   2018/6/27
  * Time   2:41 PM
  */
-public class FieldFactory {
+public class BeanFactory {
 
     static Map<Field, Object> fieldObjectMap = new HashedMap();
 

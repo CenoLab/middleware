@@ -14,21 +14,20 @@ import com.iot.nero.nraft.annotation.ConfigField;
 @ConfigClass
 public class Config {
 
-
-
     @ConfigField("server.host")
     private String host = "localhost";
     @ConfigField("server.port")
     private Integer port = 1080;
 
 
-
-
-
     @ConfigField("node.name")
     private String nodeName;
     @ConfigField("node.note")
     private String nodeNote;
+
+
+    @ConfigField("cluster.default.node.list")
+    private String nodeList;
 
 
     @ConfigField("auth.enable")
@@ -41,11 +40,12 @@ public class Config {
     public Config() {
     }
 
-    public Config(String host, Integer port, String nodeName, String nodeNote, Boolean auth, String authKey, String authSecret) {
+    public Config(String host, Integer port, String nodeName, String nodeNote, String nodeList, Boolean auth, String authKey, String authSecret) {
         this.host = host;
         this.port = port;
         this.nodeName = nodeName;
         this.nodeNote = nodeNote;
+        this.nodeList = nodeList;
         this.auth = auth;
         this.authKey = authKey;
         this.authSecret = authSecret;
@@ -83,6 +83,14 @@ public class Config {
         this.nodeNote = nodeNote;
     }
 
+    public String getNodeList() {
+        return nodeList;
+    }
+
+    public void setNodeList(String nodeList) {
+        this.nodeList = nodeList;
+    }
+
     public Boolean getAuth() {
         return auth;
     }
@@ -114,6 +122,7 @@ public class Config {
                 ", port=" + port +
                 ", nodeName='" + nodeName + '\'' +
                 ", nodeNote='" + nodeNote + '\'' +
+                ", nodeList='" + nodeList + '\'' +
                 ", auth=" + auth +
                 ", authKey='" + authKey + '\'' +
                 ", authSecret='" + authSecret + '\'' +

@@ -8,16 +8,16 @@ import java.io.Serializable;
  * Date   2018/7/17
  * Time   6:48 PM
  */
-public class RequestVoteArgs implements Serializable {
+public class VoteArgs implements Serializable {
     private Integer term;
     private Integer candidateId;
     private Integer lastLogIndex;
     private Integer lastLogTerm;
 
-    public RequestVoteArgs() {
+    public VoteArgs() {
     }
 
-    public RequestVoteArgs(Integer term, Integer candidateId, Integer lastLogIndex, Integer lastLogTerm) {
+    public VoteArgs(Integer term, Integer candidateId, Integer lastLogIndex, Integer lastLogTerm) {
         this.term = term;
         this.candidateId = candidateId;
         this.lastLogIndex = lastLogIndex;
@@ -58,7 +58,7 @@ public class RequestVoteArgs implements Serializable {
 
     @Override
     public String toString() {
-        return "RequestVoteArgs{" +
+        return "VoteArgs{" +
                 "term=" + term +
                 ", candidateId=" + candidateId +
                 ", lastLogIndex=" + lastLogIndex +
