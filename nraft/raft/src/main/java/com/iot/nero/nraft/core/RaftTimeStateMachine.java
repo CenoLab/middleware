@@ -5,15 +5,21 @@ import com.iot.nero.nraft.cluster.NodeManager;
 import com.iot.nero.nraft.cluster.entity.Node;
 import com.iot.nero.nraft.constant.Role;
 import com.iot.nero.nraft.entity.HeartBeat;
+import com.iot.nero.nraft.entity.HeartBeatReply;
 import com.iot.nero.nraft.entity.VoteArgs;
+import com.iot.nero.nraft.factory.ConfigFactory;
 import com.iot.nero.nraft.service.IRaftService;
 import com.iot.nero.nraft.utils.RandomUtils;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static com.iot.nero.nraft.constant.CONSTANT.pInfo;
 
 
 /**
@@ -97,6 +103,7 @@ public class RaftTimeStateMachine {
                 @Override
                 public void run() {
                     if (raftService.vote(voteArgs).getVoteGranted()) { // 投票请求
+
                         if (voteNum.incrementAndGet() > nodeList.size() / 2) { // 的到一般以上的节点票数
                             role = Role.LEADER;
                         }
@@ -109,10 +116,11 @@ public class RaftTimeStateMachine {
     /**
      * 作为 leader 向其他节点发送心跳
      */
-    private void sendHeartBeat() throws NoSuchMethodException, InstantiationException, IOException, IllegalAccessException {
+    private void sendHeartBeat() throws NoSuchMethodException, InstantiationException, IOException, IllegalAccessException, InterruptedException {
         List<Node> nodeList =  nodeManager.getNodeList();
 
         final HeartBeat heartBeat = new HeartBeat(term,nodeList);
+        final CountDownLatch latch = new CountDownLatch(nodeList.size());
 
         for(Node node:nodeList){ // 遍历节点
             // 从客户端连接池获取连接
@@ -120,9 +128,14 @@ public class RaftTimeStateMachine {
             executorService.execute(new Runnable() { // 并发向其他节点发送心跳
                 @Override
                 public void run() {
-                    raftService.heartBeat(heartBeat); // 心跳发送
+                    HeartBeatReply heartBeatReply  = raftService.heartBeat(heartBeat); // 心跳发送
+                    latch.countDown();
                 }
             });
+
+            if (!latch.await(ConfigFactory.getConfig().getTimeOut(), TimeUnit.MILLISECONDS)) { // 某个节点超时未响应
+                pInfo("some node timeout,em..."); // 高并发情况下的业务流量导致心跳命令包丢包率增大，还得考虑心跳未响应次数判断节点是否掉线
+            }
         }
 
     }

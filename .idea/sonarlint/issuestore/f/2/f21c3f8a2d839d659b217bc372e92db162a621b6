@@ -1,0 +1,4 @@
+
+Osquid:S1191"5Use classes from the Java API instead of Sun classes.(•ó¤¡ýÿÿÿÿ
+isquid:S1450"URemove the "leader" field and declare it as a local variable in the relevant methods.(¯§¶a
+gsquid:UselessImportCheck"@Remove this unused import 'com.sun.jna.platform.win32.Winnetwk'.(•ó¤¡ýÿÿÿÿ

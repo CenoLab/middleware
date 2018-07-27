@@ -79,7 +79,7 @@ public class RpcClient {
                             request.setAuthentication(authentication);
                         }
 
-                        request.setRequestType((byte) 0x03);
+                        request.setRequestType((byte) 0x01);
                         request.setData(invokeEntity);
 
 
@@ -89,7 +89,7 @@ public class RpcClient {
                         if (port < 0 || port > 65535) {
                             throw new InvalidPortException(CONSTANT.INVALID_PORT);
                         }
-
+                        pInfo("(CONNECT) "+address+":"+port);
                         socketChannel = SocketChannel.open(new InetSocketAddress(address, port));
                         socketChannel.configureBlocking(false);
                         socketChannel.write(ByteBuffer.wrap(Snappy.compress(ProtoStuffUtils.serializer(request))));

@@ -1,0 +1,5 @@
+
+gsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(¢òÍÍ
+­%squid:RedundantThrowsDeclarationCheck"yRemove the declaration of thrown exception 'java.lang.InstantiationException', as it cannot be thrown from method's body.(ÞÈòÒüÿÿÿÿ
+­%squid:RedundantThrowsDeclarationCheck"yRemove the declaration of thrown exception 'java.lang.IllegalAccessException', as it cannot be thrown from method's body.(ÞÈòÒüÿÿÿÿ
+¬%squid:RedundantThrowsDeclarationCheck"xRemove the declaration of thrown exception 'java.lang.NoSuchMethodException', as it cannot be thrown from method's body.(ÞÈòÒüÿÿÿÿ

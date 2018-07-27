@@ -2,7 +2,6 @@ package com.iot.nero.nraft;
 
 
 import com.iot.nero.nraft.annotation.InjectClass;
-import com.iot.nero.nraft.annotation.InjectField;
 import com.iot.nero.nraft.annotation.Service;
 import com.iot.nero.nraft.constant.CONSTANT;
 import com.iot.nero.nraft.core.RaftTimeStateMachine;
@@ -40,10 +39,9 @@ public class NRaftBootstrap {
     private RaftTimeStateMachine raftTimeStateMachine;
 
 
-    private void initStateMachine() throws InterruptedException, NoSuchMethodException, InstantiationException, IOException, IllegalAccessException {
+    private void initStateMachine() throws NoSuchMethodException, InstantiationException, IOException, IllegalAccessException {
         raftTimeStateMachine = new RaftTimeStateMachine();
         raftTimeStateMachine.init();
-        raftTimeStateMachine.start();
     }
 
 
@@ -63,15 +61,32 @@ public class NRaftBootstrap {
         }
     }
 
-    private void startRaftStateMachine() throws InterruptedException, NoSuchMethodException, InstantiationException, IOException, IllegalAccessException {
-        raftTimeStateMachine.init();
-        raftTimeStateMachine.start();
+    private void startRaftStateMachine() throws InterruptedException{
+        Thread raftTimeStateMachineThrad = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    raftTimeStateMachine.start();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        raftTimeStateMachineThrad.start();
     }
 
     private void runRaftListener() throws IOException, IllegalAccessException, NoSuchMethodException, InstantiationException {
         DFS_SERVER_LISTEN_PORT = ConfigFactory.getConfig().getPort();
-        IServer raftServer = new RaftServer(classClassMap,DFS_SERVER_LISTEN_PORT);
-        raftServer.start();
+        final IServer raftServer = new RaftServer(classClassMap,DFS_SERVER_LISTEN_PORT);
+        Thread raftServerThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                raftServer.start();
+            }
+        });
+        raftServerThread.start();
+
     }
 
     public void start() {
@@ -79,24 +94,27 @@ public class NRaftBootstrap {
         checkSystem();
         try {
             initStateMachine();
-        } catch (InterruptedException | NoSuchMethodException | InstantiationException | IllegalAccessException | IOException e) {
+        } catch ( NoSuchMethodException | InstantiationException | IllegalAccessException | IOException e) {
             e.printStackTrace();
         }
 
 
         initService();
 
-        try {
-            startRaftStateMachine();
-        } catch (InterruptedException | NoSuchMethodException | IOException | InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
 
         try {
             runRaftListener();
         } catch (IOException | IllegalAccessException | NoSuchMethodException | InstantiationException e) {
             e.printStackTrace();
         }
+
+
+        try {
+            startRaftStateMachine();
+        } catch (InterruptedException  e) {
+            e.printStackTrace();
+        }
+
     }
 
 

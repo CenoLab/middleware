@@ -1,0 +1,8 @@
+# Created by .ignore support plugin (hsz.mobi)
+将删除 .idea/sonarlint/
+将忽略仓库 fsbc/
+将删除 nraft/raft/target/classes/com/iot/nero/nraft/NRaftBootstrap$1.class
+将删除 nraft/raft/target/classes/com/iot/nero/nraft/NRaftBootstrap$2.class
+将删除 nraft/raft/target/classes/com/iot/nero/nraft/entity/HeartBeatReply.class
+将删除 nraft/raft/target/generated-sources/
+将删除 nraft/raft/target/generated-test-sources/

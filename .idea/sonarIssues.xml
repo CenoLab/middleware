@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="issues">
+    <option name="index">
+      <map>
+        <entry key="/fragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JCMall/purchase/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JCMall/purchase/purchase-common/src/main/java/com/jd/ecc/user/common/util/Constants.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JCMall/purchase/purchase-common/src/main/java/com/jd/ecc/user/common/util/DateUtils.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JCMall/purchase/purchase-common/src/main/java/com/jd/ecc/user/common/util/EndTimeUtils.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JCMall/purchase/purchase-common/src/main/java/com/jd/ecc/user/common/util/ExcelUtils.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JCMall/purchase/purchase-common/src/main/java/com/jd/ecc/user/common/util/GsonUtils.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JCMall/purchase/purchase-web/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JCMall/purchase/purchase-web/src/main/java/com/jd/purchase/ContainerApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JCMall/purchase/purchase-web/src/main/java/com/jd/purchase/web/BudgetController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JCMall/purchase/purchase-web/src/main/java/com/jd/purchase/web/HelloController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JCMall/purchase/purchase-web/src/main/resources/application-local.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/.idea/workspace.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/build/config/licenseMakeConf.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/config/licenseMakeConf.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/licenseAgent/main.cpp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/pushPlugin/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/pushPlugin/src/main/java/com/iot/nero/smartcan/plugin/App.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/pushPlugin/src/main/java/com/iot/nero/smartcan/plugin/dao/CarAdminDao.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/pushPlugin/src/main/java/com/iot/nero/smartcan/plugin/dao/CarAdminDaoImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/pushPlugin/src/main/java/com/iot/nero/smartcan/plugin/entity/CarAdmin.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/pushPlugin/src/main/java/com/iot/nero/smartcan/plugin/entity/User.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/pushPlugin/src/main/java/com/iot/nero/smartcan/plugin/impl/SmartFaultListener.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/pushPlugin/src/main/java/com/iot/nero/smartcan/plugin/utils/AiyunSDK.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/pushPlugin/src/main/java/com/iot/nero/smartcan/plugin/utils/AiyunSMS.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/pushPlugin/src/main/java/com/iot/nero/smartcan/plugin/utils/SqlSessionFactoryUtil.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/pushPlugin/src/main/java/com/iot/nero/smartcan/plugin/utils/SqlSessionUtils.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/pushPlugin/src/test/java/com/iot/nero/smartcan/plugin/dao/CarAdminDaoTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/serverCore/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/serverCore/src/main/java/com/iot/nero/smartcan/SmartCanBootstrap.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/serverCore/src/main/java/com/iot/nero/smartcan/license/core/LicenseManagerHolder.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/serverCore/src/main/java/com/iot/nero/smartcan/license/core/LicenseVertify.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/serverCore/src/main/java/com/iot/nero/smartcan/license/core/a.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/serverCore/src/main/java/com/iot/nero/smartcan/license/core/aa.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/serverCore/src/main/java/com/iot/nero/smartcan/license/entity/License.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/serverCore/src/main/java/com/iot/nero/smartcan/license/entity/LicenseMake.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/serverCore/src/main/resources/config/licenseMakeConf.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SmartCanServer/serverCore/src/main/resources/config/licenseVertifyConf.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/.gitignore">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/config/config.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/nraft/raft/config/config.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/NRaftBootstrap.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/client/RpcClient.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/config/Config.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/constant/CONSTANT.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/core/RaftTimeStateMachine.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

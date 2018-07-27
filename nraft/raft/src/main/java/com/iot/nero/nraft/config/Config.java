@@ -29,6 +29,9 @@ public class Config {
     @ConfigField("cluster.default.node.list")
     private String nodeList;
 
+    @ConfigField("cluster.default.node.timeout")
+    private Integer timeOut;
+
 
     @ConfigField("auth.enable")
     private Boolean auth;
@@ -40,12 +43,13 @@ public class Config {
     public Config() {
     }
 
-    public Config(String host, Integer port, String nodeName, String nodeNote, String nodeList, Boolean auth, String authKey, String authSecret) {
+    public Config(String host, Integer port, String nodeName, String nodeNote, String nodeList, Integer timeOut, Boolean auth, String authKey, String authSecret) {
         this.host = host;
         this.port = port;
         this.nodeName = nodeName;
         this.nodeNote = nodeNote;
         this.nodeList = nodeList;
+        this.timeOut = timeOut;
         this.auth = auth;
         this.authKey = authKey;
         this.authSecret = authSecret;
@@ -115,6 +119,14 @@ public class Config {
         this.authSecret = authSecret;
     }
 
+    public Integer getTimeOut() {
+        return timeOut;
+    }
+
+    public void setTimeOut(Integer timeOut) {
+        this.timeOut = timeOut;
+    }
+
     @Override
     public String toString() {
         return "Config{" +
@@ -123,6 +135,7 @@ public class Config {
                 ", nodeName='" + nodeName + '\'' +
                 ", nodeNote='" + nodeNote + '\'' +
                 ", nodeList='" + nodeList + '\'' +
+                ", timeOut=" + timeOut +
                 ", auth=" + auth +
                 ", authKey='" + authKey + '\'' +
                 ", authSecret='" + authSecret + '\'' +
