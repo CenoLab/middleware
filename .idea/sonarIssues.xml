@@ -38,6 +38,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../JCMall/purchase/purchase-dao/src/main/java/com/jd/purchase/dao/OrderPlanRelationMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../JCMall/purchase/purchase-web/pom.xml">
           <value>
             <set />
@@ -218,7 +223,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/cluster/NodeManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/config/Config.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/config/ConfigLoader.java">
           <value>
             <set />
           </value>
@@ -229,6 +244,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/core/RaftTimeStateMachine.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/server/WorkerServeHandler.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/service/impl/RaftService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../nacos/pom.xml">
           <value>
             <set />
           </value>

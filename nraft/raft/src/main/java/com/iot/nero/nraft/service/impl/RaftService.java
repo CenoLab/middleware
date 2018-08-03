@@ -1,6 +1,7 @@
 package com.iot.nero.nraft.service.impl;
 
 
+import com.iot.nero.nraft.annotation.Service;
 import com.iot.nero.nraft.core.RaftTimeStateMachine;
 import com.iot.nero.nraft.entity.*;
 import com.iot.nero.nraft.service.IRaftService;
@@ -11,6 +12,7 @@ import com.iot.nero.nraft.service.IRaftService;
  * Date   2018/7/19
  * Time   12:27 PM
  */
+@Service
 public class RaftService implements IRaftService {
 
     @Override

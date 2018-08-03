@@ -42,7 +42,9 @@ public class ConfigLoader {
                         continue;
                     } else {
                         String[] ccc = cc.split("=");
-                        configMap.put(ccc[0], ccc[1]);
+                        if(ccc.length==2) {
+                            configMap.put(ccc[0], ccc[1]);
+                        }
                     }
                 }
             }

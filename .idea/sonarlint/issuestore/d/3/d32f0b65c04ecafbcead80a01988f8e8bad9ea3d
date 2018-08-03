@@ -1,5 +1,5 @@
 
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-msquid:S1450"XRemove the "isRunning" field and declare it as a local variable in the relevant methods.(è’óæ
-Dsquid:S1066"/Merge this if statement with the enclosing one.(ö®‡¾
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+Psquid:S1135†"2Complete the task associated to this TODO comment.(ª¢$8ı™ÄŞÍ,
+Gsquid:S1148¬"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ô½´ÜÍ,
+vsquid:S1450!"XRemove the "isRunning" field and declare it as a local variable in the relevant methods.(è’óæ8Ûë¬ŞÍ,
+Gsquid:S1148¡"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ô½´ÜÍ,

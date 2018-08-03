@@ -61,6 +61,12 @@ public class RaftTimeStateMachine {
 
 
     private void startUp() throws InterruptedException {
+
+        //检查节点列表个数
+        if(nodeManager.getNodeList().size()==0){ //只有自己一个节点，第一个启动的节点
+            role = Role.LEADER; //自己就是Leader
+        }
+
         Integer startWaitMilliseconds = RandomUtils.getRandom(100, 200);  // 随机 100ms～200ms 等待时长，等待leader heartbeat
         while (role == Role.FOLLOWER) {
             if (startWaitMilliseconds == 0) {
@@ -103,10 +109,10 @@ public class RaftTimeStateMachine {
                 @Override
                 public void run() {
                     if (raftService.vote(voteArgs).getVoteGranted()) { // 投票请求
-
-                        if (voteNum.incrementAndGet() > nodeList.size() / 2) { // 的到一般以上的节点票数
-                            role = Role.LEADER;
-                        }
+                        if (voteNum.incrementAndGet() <= nodeList.size() / 2) {
+                            return;
+                        } // 的到一般以上的节点票数
+                        role = Role.LEADER;
                     }
                 }
             });
@@ -129,6 +135,11 @@ public class RaftTimeStateMachine {
                 @Override
                 public void run() {
                     HeartBeatReply heartBeatReply  = raftService.heartBeat(heartBeat); // 心跳发送
+
+                    if(heartBeatReply.getTerm()>RaftTimeStateMachine.term){ // 如果term大于当前term，集群可能产生了脑裂
+                        // todo follow new leader.
+                    }
+
                     latch.countDown();
                 }
             });
