@@ -223,6 +223,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/client/RpcClientConnectionPool.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/client/RpcErrorListener.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/cluster/NodeManager.java">
           <value>
             <set />

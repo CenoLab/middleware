@@ -12,7 +12,10 @@ import com.iot.nero.nraft.service.IRaftService;
 import com.iot.nero.nraft.utils.RandomUtils;
 
 import java.io.IOException;
+import java.net.ConnectException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -32,16 +35,19 @@ public class RaftTimeStateMachine {
 
     private Boolean isRunning = false;
 
-    private static Integer term;
+    private static Integer term = 0;
     private Integer candidateId;
     private Integer lastLogIndex;
     private Integer lastLogTerm;
     private AtomicInteger voteNum;
 
 
+    private Map<Node,Integer> inActiveMap;
+
+
 
     private Role role = Role.FOLLOWER; // 当前节点状态
-    private Integer waitMilliseconds; // follower 等待时间
+    private Integer waitMilliseconds = 15*1000; // follower 等待时间
 
 
     private NodeManager nodeManager;
@@ -54,9 +60,22 @@ public class RaftTimeStateMachine {
 
 
     public void init() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IOException {
+        waitMilliseconds = ConfigFactory.getConfig().getHeartBeatTimeOut();
+
         voteNum = new AtomicInteger(0);
         nodeManager = new NodeManager();
+        inActiveMap = new HashMap<>();
+        initInActiveMap();
+    }
 
+    private void initInActiveMap() {
+        for(Node node:nodeManager.getNodeList()){
+            if(inActiveMap.containsKey(node)){
+                inActiveMap.put(node,inActiveMap.get(node)+1);
+            }else {
+                inActiveMap.put(node, 0);
+            }
+        }
     }
 
 
@@ -69,7 +88,7 @@ public class RaftTimeStateMachine {
 
         Integer startWaitMilliseconds = RandomUtils.getRandom(100, 200);  // 随机 100ms～200ms 等待时长，等待leader heartbeat
         while (role == Role.FOLLOWER) {
-            if (startWaitMilliseconds == 0) {
+            if (startWaitMilliseconds <= 0) {
                 role = Role.CANDIDATE; // 等待时间到，没收到响应，状态变成 Candidate
                 break; // 跳出等待循环
             } else {
@@ -81,7 +100,7 @@ public class RaftTimeStateMachine {
 
     private void waitHeartBeat() throws InterruptedException {
         while (role == Role.FOLLOWER) {
-            if (waitMilliseconds == 0) {
+            if (waitMilliseconds <= 0) {
                 role = Role.CANDIDATE; // 等待时间到，没收到响应，状态变成 Candidate
                 break; // 跳出等待循环
             } else {
@@ -125,16 +144,18 @@ public class RaftTimeStateMachine {
     private void sendHeartBeat() throws NoSuchMethodException, InstantiationException, IOException, IllegalAccessException, InterruptedException {
         List<Node> nodeList =  nodeManager.getNodeList();
 
+        initInActiveMap();
         final HeartBeat heartBeat = new HeartBeat(term,nodeList);
         final CountDownLatch latch = new CountDownLatch(nodeList.size());
 
-        for(Node node:nodeList){ // 遍历节点
+        for(final Node node:nodeList){ // 遍历节点
             // 从客户端连接池获取连接
             final IRaftService raftService = connectionPool.getConnection(node).getRemoteProxyService(IRaftService.class);
             executorService.execute(new Runnable() { // 并发向其他节点发送心跳
                 @Override
                 public void run() {
                     HeartBeatReply heartBeatReply  = raftService.heartBeat(heartBeat); // 心跳发送
+                    inActiveMap.remove(node);
 
                     if(heartBeatReply.getTerm()>RaftTimeStateMachine.term){ // 如果term大于当前term，集群可能产生了脑裂
                         role = Role.FOLLOWER;
@@ -144,11 +165,21 @@ public class RaftTimeStateMachine {
                     latch.countDown();
                 }
             });
-
-            if (!latch.await(ConfigFactory.getConfig().getTimeOut(), TimeUnit.MILLISECONDS)) { // 某个节点超时未响应
-                pInfo("some node timeout,em..."); // 高并发情况下的业务流量导致心跳命令包丢包率增大，还得考虑心跳未响应次数判断节点是否掉线
-            }
         }
+
+        if (!latch.await(ConfigFactory.getConfig().getTimeOut(), TimeUnit.MILLISECONDS)) { // 某个节点超时未响应
+            pInfo("some node timeout,em...");
+            // 节点超时次数加一
+            for(Map.Entry<Node,Integer> entry:inActiveMap.entrySet()){
+                inActiveMap.put(entry.getKey(),entry.getValue()+1);
+                if(entry.getValue()>=5){
+                    nodeManager.removeNode(entry.getKey());
+                }
+            }
+            // 高并发情况下的业务流量导致心跳命令包丢包率增大，还得考虑心跳未响应次数判断节点是否掉线
+            // 如果某个节点连续超时5次 , 就从NodeManager里删除
+        }
+        Thread.sleep(ConfigFactory.getConfig().getHeartBeatInterval());
 
     }
 
@@ -164,7 +195,7 @@ public class RaftTimeStateMachine {
             if (role == Role.CANDIDATE) { // 状态变成 Candidate 并向其他节点发出 voteMe 请求
                 try {
                     startElection(); // 开始选举
-                } catch (NoSuchMethodException | InstantiationException | IOException | IllegalAccessException e) {
+                }catch (NoSuchMethodException | InstantiationException | IOException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
             }

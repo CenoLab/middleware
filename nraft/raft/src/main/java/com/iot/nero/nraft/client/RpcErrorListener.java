@@ -11,4 +11,6 @@ import com.iot.nero.nraft.entity.response.Response;
  */
 public interface RpcErrorListener {
     void onError(Response<Object> response);
+
+    void onConnectionException(Exception e);
 }

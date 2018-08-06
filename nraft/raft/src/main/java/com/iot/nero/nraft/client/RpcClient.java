@@ -1,5 +1,6 @@
 package com.iot.nero.nraft.client;
 
+import com.iot.nero.nraft.cluster.NodeManager;
 import com.iot.nero.nraft.cluster.entity.Node;
 import com.iot.nero.nraft.constant.CONSTANT;
 import com.iot.nero.nraft.entity.auth.Authentication;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.net.ConnectException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
@@ -51,7 +53,7 @@ public class RpcClient {
         this.port = node.getPort();
     }
 
-    public void init() throws IOException, NoSuchMethodException, IllegalAccessException, InstantiationException {
+    public void init() throws IOException {
         this.selector = Selector.open();
     }
 
@@ -90,13 +92,18 @@ public class RpcClient {
                             throw new InvalidPortException(CONSTANT.INVALID_PORT);
                         }
                         pInfo("(CONNECT) "+address+":"+port);
-                        socketChannel = SocketChannel.open(new InetSocketAddress(address, port));
-                        socketChannel.configureBlocking(false);
-                        socketChannel.write(ByteBuffer.wrap(Snappy.compress(ProtoStuffUtils.serializer(request))));
-                        socketChannel.register(selector, SelectionKey.OP_READ);
 
-                        return getResult();
-
+                        try {
+                           socketChannel = SocketChannel.open(new InetSocketAddress(address, port));
+                           socketChannel.configureBlocking(false);
+                           socketChannel.write(ByteBuffer.wrap(Snappy.compress(ProtoStuffUtils.serializer(request))));
+                           socketChannel.register(selector, SelectionKey.OP_READ);
+                            return getResult();
+                        }catch (ConnectException e){
+                            rpcErrorListener.onException(e);
+                            socketChannel.close();
+                        }
+                        return null;
                     }
                 }
         );

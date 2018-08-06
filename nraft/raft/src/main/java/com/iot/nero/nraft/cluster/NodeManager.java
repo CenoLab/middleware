@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.iot.nero.nraft.constant.CONSTANT.pInfo;
+
 /**
  * Author neroyang
  * Email  nerosoft@outlook.com
@@ -30,6 +32,7 @@ public class NodeManager {
                 nodeList.add(new Node("", nodeInfo[0], Integer.valueOf(nodeInfo[1])));
             }
         }
+        pInfo("(NODES) "+nodeList.toString());
     }
 
     public List<Node> addNode(Node node) {
@@ -46,4 +49,8 @@ public class NodeManager {
         return this.leader;
     }
 
+    public List<Node> removeNode(Node node) {
+        nodeList.remove(node);
+        return nodeList;
+    }
 }

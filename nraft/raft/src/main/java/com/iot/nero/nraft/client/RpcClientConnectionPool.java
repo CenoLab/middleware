@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.iot.nero.nraft.constant.CONSTANT.pInfo;
+
 /**
  * Author neroyang
  * Email  nerosoft@outlook.com
@@ -21,6 +23,7 @@ public class RpcClientConnectionPool {
         RpcClient rpcClient = nodeRpcClientMap.get(node);
         if(rpcClient==null){
             rpcClient = new RpcClient(node);
+            pInfo("(NEW CONNECTION) "+node.toString());
             rpcClient.init();
             // 错误事件监听
             rpcClient.setRpcErrorListener(new RpcErrorListener() {
@@ -37,6 +40,11 @@ public class RpcClientConnectionPool {
                         // todo ....
                     }
                 }
+
+                @Override
+                public void onConnectionException(Exception e) {
+                    pInfo("(CONNECTION EXCEPTION) "+e);
+                }
             });
 
             nodeRpcClientMap.put(node,rpcClient);
@@ -50,6 +58,7 @@ public class RpcClientConnectionPool {
         RpcClient rpcClient = nodeRpcClientMap.get(node);
         if(rpcClient==null){
             rpcClient = new RpcClient(node);
+            pInfo("(NEW CONNECTION) "+node.toString());
             rpcClient.init();
             // 错误事件监听
             rpcClient.setRpcErrorListener(rpcErrorListener);

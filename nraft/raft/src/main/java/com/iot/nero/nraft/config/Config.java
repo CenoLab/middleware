@@ -3,6 +3,7 @@ package com.iot.nero.nraft.config;
 
 import com.iot.nero.nraft.annotation.ConfigClass;
 import com.iot.nero.nraft.annotation.ConfigField;
+import com.iot.nero.nraft.annotation.InjectField;
 
 /**
  * Author neroyang
@@ -32,6 +33,13 @@ public class Config {
     @ConfigField("cluster.default.node.timeout")
     private Integer timeOut;
 
+    @ConfigField("cluster.default.leader.heartbeat.interval")
+    private Integer heartBeatInterval;
+
+    @ConfigField("cluster.default.follower.heartbeat.timeout")
+    private Integer heartBeatTimeOut;
+
+
 
     @ConfigField("auth.enable")
     private Boolean auth;
@@ -43,13 +51,15 @@ public class Config {
     public Config() {
     }
 
-    public Config(String host, Integer port, String nodeName, String nodeNote, String nodeList, Integer timeOut, Boolean auth, String authKey, String authSecret) {
+    public Config(String host, Integer port, String nodeName, String nodeNote, String nodeList, Integer timeOut, Integer heartBeatInterval, Integer heartBeatTimeOut, Boolean auth, String authKey, String authSecret) {
         this.host = host;
         this.port = port;
         this.nodeName = nodeName;
         this.nodeNote = nodeNote;
         this.nodeList = nodeList;
         this.timeOut = timeOut;
+        this.heartBeatInterval = heartBeatInterval;
+        this.heartBeatTimeOut = heartBeatTimeOut;
         this.auth = auth;
         this.authKey = authKey;
         this.authSecret = authSecret;
@@ -95,6 +105,30 @@ public class Config {
         this.nodeList = nodeList;
     }
 
+    public Integer getTimeOut() {
+        return timeOut;
+    }
+
+    public void setTimeOut(Integer timeOut) {
+        this.timeOut = timeOut;
+    }
+
+    public Integer getHeartBeatInterval() {
+        return heartBeatInterval;
+    }
+
+    public void setHeartBeatInterval(Integer heartBeatInterval) {
+        this.heartBeatInterval = heartBeatInterval;
+    }
+
+    public Integer getHeartBeatTimeOut() {
+        return heartBeatTimeOut;
+    }
+
+    public void setHeartBeatTimeOut(Integer heartBeatTimeOut) {
+        this.heartBeatTimeOut = heartBeatTimeOut;
+    }
+
     public Boolean getAuth() {
         return auth;
     }
@@ -119,14 +153,6 @@ public class Config {
         this.authSecret = authSecret;
     }
 
-    public Integer getTimeOut() {
-        return timeOut;
-    }
-
-    public void setTimeOut(Integer timeOut) {
-        this.timeOut = timeOut;
-    }
-
     @Override
     public String toString() {
         return "Config{" +
@@ -136,6 +162,8 @@ public class Config {
                 ", nodeNote='" + nodeNote + '\'' +
                 ", nodeList='" + nodeList + '\'' +
                 ", timeOut=" + timeOut +
+                ", heartBeatInterval=" + heartBeatInterval +
+                ", heartBeatTimeOut=" + heartBeatTimeOut +
                 ", auth=" + auth +
                 ", authKey='" + authKey + '\'' +
                 ", authSecret='" + authSecret + '\'' +
