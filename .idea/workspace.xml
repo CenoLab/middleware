@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3271b43b-75e5-4a22-b7db-f365ee58c729" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/client/RpcClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/client/RpcClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/core/RaftTimeStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/core/RaftTimeStateMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nraft/raft/target/classes/com/iot/nero/nraft/core/RaftTimeStateMachine$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/nraft/raft/target/classes/com/iot/nero/nraft/core/RaftTimeStateMachine$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nraft/raft/target/classes/com/iot/nero/nraft/core/RaftTimeStateMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/nraft/raft/target/classes/com/iot/nero/nraft/core/RaftTimeStateMachine.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/nraft/raft/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,16 +34,16 @@
       <file leaf-file-name="RaftTimeStateMachine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/core/RaftTimeStateMachine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="135" column="40" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="40" />
+            <state relative-caret-position="70">
+              <caret line="73" column="58" selection-start-line="73" selection-start-column="58" selection-end-line="73" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3404#3833#0" expanded="true" />
                 <element signature="e#3832#3833#0" expanded="true" />
-                <element signature="e#4470#4908#0" expanded="true" />
-                <element signature="e#4907#4908#0" expanded="true" />
-                <element signature="e#6696#6697#0" expanded="true" />
-                <element signature="e#6723#6724#0" expanded="true" />
+                <element signature="e#5509#6094#0" expanded="true" />
+                <element signature="e#6093#6094#0" expanded="true" />
+                <element signature="e#7801#7802#0" expanded="true" />
+                <element signature="e#7828#7829#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -50,8 +52,8 @@
       <file leaf-file-name="config.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/config.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+            <state relative-caret-position="231">
+              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -60,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/nraft/raft/config/config.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -123,8 +125,8 @@
       <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="189">
+              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -228,8 +230,8 @@
         <option value="$PROJECT_DIR$/nraft/raft/config/config.properties" />
         <option value="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/client/RpcErrorListener.java" />
         <option value="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/client/RpcClientConnectionPool.java" />
-        <option value="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/core/RaftTimeStateMachine.java" />
         <option value="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/client/RpcClient.java" />
+        <option value="$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/core/RaftTimeStateMachine.java" />
         <option value="$PROJECT_DIR$/config/config.properties" />
       </list>
     </option>
@@ -460,12 +462,12 @@
       <workItem from="1532501639886" duration="995000" />
       <workItem from="1532691162921" duration="4783000" />
       <workItem from="1533293817182" duration="5816000" />
-      <workItem from="1533552001035" duration="8852000" />
+      <workItem from="1533552001035" duration="10574000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44215000" />
+    <option name="totallyTimeSpent" value="45937000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-11" width="1922" height="1092" extended-state="6" />
@@ -483,7 +485,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4523305" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.717161" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.32838982" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
@@ -901,20 +903,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nraft/raft/config/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/client/RpcErrorListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
@@ -929,22 +917,6 @@
           <folding>
             <element signature="e#1554#1555#0" expanded="true" />
             <element signature="e#1601#1602#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/core/RaftTimeStateMachine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="135" column="40" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3404#3833#0" expanded="true" />
-            <element signature="e#3832#3833#0" expanded="true" />
-            <element signature="e#4470#4908#0" expanded="true" />
-            <element signature="e#4907#4908#0" expanded="true" />
-            <element signature="e#6696#6697#0" expanded="true" />
-            <element signature="e#6723#6724#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -964,10 +936,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.properties">
+    <entry file="file://$PROJECT_DIR$/nraft/raft/config/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
-          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nraft/raft/src/main/java/com/iot/nero/nraft/core/RaftTimeStateMachine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="73" column="58" selection-start-line="73" selection-start-column="58" selection-end-line="73" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3404#3833#0" expanded="true" />
+            <element signature="e#3832#3833#0" expanded="true" />
+            <element signature="e#5509#6094#0" expanded="true" />
+            <element signature="e#6093#6094#0" expanded="true" />
+            <element signature="e#7801#7802#0" expanded="true" />
+            <element signature="e#7828#7829#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
         </state>
       </provider>
     </entry>

@@ -71,7 +71,7 @@ public class RaftTimeStateMachine {
     private void initInActiveMap() {
         for(Node node:nodeManager.getNodeList()){
             if(inActiveMap.containsKey(node)){
-                inActiveMap.put(node,inActiveMap.get(node)+1);
+                inActiveMap.put(node,inActiveMap.get(node));
             }else {
                 inActiveMap.put(node, 0);
             }
@@ -151,6 +151,7 @@ public class RaftTimeStateMachine {
         List<Node> nodeList =  nodeManager.getNodeList();
 
         initInActiveMap();
+        pInfo("(HEARTBEAT) Nodes:"+inActiveMap.toString());
         final HeartBeat heartBeat = new HeartBeat(term,nodeList);
         final CountDownLatch latch = new CountDownLatch(nodeList.size());
 
@@ -160,26 +161,30 @@ public class RaftTimeStateMachine {
             executorService.execute(new Runnable() { // 并发向其他节点发送心跳
                 @Override
                 public void run() {
-                    HeartBeatReply heartBeatReply  = raftService.heartBeat(heartBeat); // 心跳发送
-                    inActiveMap.remove(node);
-
-                    if(heartBeatReply.getTerm()>RaftTimeStateMachine.term){ // 如果term大于当前term，集群可能产生了脑裂
-                        role = Role.FOLLOWER;
-                        // todo follow new leader.
+                    try {
+                        HeartBeatReply heartBeatReply = raftService.heartBeat(heartBeat); // 心跳发送
+                        if(heartBeatReply.getTerm()>RaftTimeStateMachine.term){ // 如果term大于当前term，集群可能产生了脑裂
+                            role = Role.FOLLOWER;
+                            // todo follow new leader.
+                        }
+                        latch.countDown();
+                        inActiveMap.remove(node);
+                    }catch (Exception e){
+                        throw e;
                     }
-
-                    latch.countDown();
                 }
             });
         }
 
         if (!latch.await(ConfigFactory.getConfig().getTimeOut(), TimeUnit.MILLISECONDS)) { // 某个节点超时未响应
-            pInfo("some node timeout,em...");
             // 节点超时次数加一
             for(Map.Entry<Node,Integer> entry:inActiveMap.entrySet()){
                 inActiveMap.put(entry.getKey(),entry.getValue()+1);
+                pInfo("(NODE) Retry "+entry.getValue()+" times HeartBeat to Node :"+entry.getKey());
                 if(entry.getValue()>=5){
+                    pInfo("(NODE) Lost Node :"+entry.getKey());
                     nodeManager.removeNode(entry.getKey());
+                    inActiveMap.remove(entry.getKey());
                 }
             }
             // 高并发情况下的业务流量导致心跳命令包丢包率增大，还得考虑心跳未响应次数判断节点是否掉线
