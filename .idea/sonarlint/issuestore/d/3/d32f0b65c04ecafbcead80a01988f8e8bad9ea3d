@@ -1,5 +1,6 @@
 
-Psquid:S1135†"2Complete the task associated to this TODO comment.(ª¢$8ı™ÄŞÍ,
-Gsquid:S1148¬"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ô½´ÜÍ,
+\squid:S1155B">Use isEmpty() to check whether the collection is empty or not.(°–¤8ì’ïûÏ,
+Psquid:S1135Œ"2Complete the task associated to this TODO comment.(ª¢$8ı™ÄŞÍ,
+Gsquid:S1148²"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ô½´ÜÍ,
+Gsquid:S1148§"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ô½´ÜÍ,
 vsquid:S1450!"XRemove the "isRunning" field and declare it as a local variable in the relevant methods.(è’óæ8Ûë¬ŞÍ,
-Gsquid:S1148¡"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ô½´ÜÍ,

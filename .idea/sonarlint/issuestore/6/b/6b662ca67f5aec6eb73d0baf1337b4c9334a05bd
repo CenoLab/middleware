@@ -1,11 +1,11 @@
 
+Osquid:S11977"8Move the array designator from the variable to the type.(²Ğ¿½
+?squid:S1148l"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?squid:S1148b"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 squid:S1450"eRemove the "DFS_SERVER_LISTEN_PORT" field and declare it as a local variable in the relevant methods.(Ãîûèùÿÿÿÿ
-Fsquid:S1148s"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÍËŞÍ,
-¯%squid:RedundantThrowsDeclarationCheck@"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(¸Àà8ÍËŞÍ,
 ~squid:S00116"aRename this field "DFS_SERVER_LISTEN_PORT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ãîûèùÿÿÿÿ
+Fsquid:S1148s"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÍËŞÍ,
 dsquid:S2142r"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€8ÍËŞÍ,
 ?squid:S1148G"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+¯%squid:RedundantThrowsDeclarationCheck@"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(¸Àà8ÍËŞÍ,
 dsquid:S2142F"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€8ÍËŞÍ,
-Osquid:S11977"8Move the array designator from the variable to the type.(²Ğ¿½
-?squid:S1148b"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-?squid:S1148l"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ

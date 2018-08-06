@@ -137,6 +137,7 @@ public class RaftTimeStateMachine {
                     HeartBeatReply heartBeatReply  = raftService.heartBeat(heartBeat); // 心跳发送
 
                     if(heartBeatReply.getTerm()>RaftTimeStateMachine.term){ // 如果term大于当前term，集群可能产生了脑裂
+                        role = Role.FOLLOWER;
                         // todo follow new leader.
                     }
 

@@ -1,4 +1,4 @@
 
+isquid:UselessImportCheck"@Remove this unused import 'com.sun.jna.platform.win32.Winnetwk'.(•ó¤¡ýÿÿÿÿ
 Qsquid:S1191"5Use classes from the Java API instead of Sun classes.(•ó¤¡ýÿÿÿÿ
 ksquid:S1450"URemove the "leader" field and declare it as a local variable in the relevant methods.(¯§¶a
-isquid:UselessImportCheck"@Remove this unused import 'com.sun.jna.platform.win32.Winnetwk'.(•ó¤¡ýÿÿÿÿ
