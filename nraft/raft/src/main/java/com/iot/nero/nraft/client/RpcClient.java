@@ -100,7 +100,7 @@ public class RpcClient {
                            socketChannel.register(selector, SelectionKey.OP_READ);
                             return getResult();
                         }catch (ConnectException e){
-                            rpcErrorListener.onException(e);
+                            rpcErrorListener.onConnectionException(e);
                             socketChannel.close();
                         }
                         return null;

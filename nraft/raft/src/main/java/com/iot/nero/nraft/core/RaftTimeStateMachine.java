@@ -114,13 +114,13 @@ public class RaftTimeStateMachine {
     /**
      * 作为 candidate 向其他节点发送 选举请求
      */
-    private void startElection() throws NoSuchMethodException, InstantiationException, IOException, IllegalAccessException {
+    private void startElection() throws NoSuchMethodException, InstantiationException, IOException, IllegalAccessException, InterruptedException {
         voteNum = new AtomicInteger(0); // 将票数设置为0
 
         final List<Node> nodeList = nodeManager.getNodeList();
 
         final VoteArgs voteArgs = new VoteArgs(term, candidateId, lastLogIndex, lastLogTerm);
-
+        final CountDownLatch latch = new CountDownLatch(nodeList.size());
         for (Node node : nodeList) { // 遍历节点
             // 从客户端连接池获取连接
             final IRaftService raftService = connectionPool.getConnection(node).getRemoteProxyService(IRaftService.class);
@@ -128,13 +128,19 @@ public class RaftTimeStateMachine {
                 @Override
                 public void run() {
                     if (raftService.vote(voteArgs).getVoteGranted()) { // 投票请求
-                        if (voteNum.incrementAndGet() <= nodeList.size() / 2) {
-                            return;
+                        latch.countDown();
+                        if (voteNum.incrementAndGet() >= nodeList.size() / 2) {
+                            for(int i = 0;i<nodeList.size();i++){
+                                latch.countDown();
+                            }
                         } // 的到一般以上的节点票数
                         role = Role.LEADER;
                     }
                 }
             });
+        }
+        if(!latch.await(ConfigFactory.getConfig().getTimeOut(),TimeUnit.MILLISECONDS)){
+            role = Role.FOLLOWER;
         }
     }
 
